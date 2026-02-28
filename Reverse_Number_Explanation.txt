@@ -1,0 +1,111 @@
+/*
+    ==========================================
+    JAVA REVERSE NUMBER - FULL EXPLANATION
+    ==========================================
+
+    Topic: How this line works:
+
+        reverse = reverse * 10 + digit;
+
+    Goal:
+    If input is 1234
+    Output should be 4321
+
+    ------------------------------------------
+    IMPORTANT IDEA:
+
+    digit = num % 10
+        → gives last digit of number
+
+    num = num / 10
+        → removes last digit
+
+    reverse = reverse * 10 + digit
+        → builds the reversed number step by step
+    ------------------------------------------
+*/
+
+import java.util.*;
+
+class Reverse_Num_Explanation {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Number :");
+        int num = sc.nextInt();
+
+        int reverse = 0;   // Initially reverse is 0
+        int digit;
+
+        /*
+            Example Input: 1234
+
+            Loop Execution:
+
+            ---------------------------
+            Iteration 1:
+            digit = 1234 % 10 = 4
+            reverse = 0 * 10 + 4 = 4
+            num = 1234 / 10 = 123
+
+            ---------------------------
+            Iteration 2:
+            digit = 123 % 10 = 3
+            reverse = 4 * 10 + 3 = 43
+            num = 123 / 10 = 12
+
+            ---------------------------
+            Iteration 3:
+            digit = 12 % 10 = 2
+            reverse = 43 * 10 + 2 = 432
+            num = 12 / 10 = 1
+
+            ---------------------------
+            Iteration 4:
+            digit = 1 % 10 = 1
+            reverse = 432 * 10 + 1 = 4321
+            num = 1 / 10 = 0
+
+            Loop stops because num becomes 0
+        */
+
+        while(num > 0){
+
+            digit = num % 10;  
+            // Gets last digit of number
+
+            reverse = reverse * 10 + digit;
+            /*
+                Why multiply by 10?
+
+                reverse * 10 shifts digits to left.
+
+                Example:
+                4 * 10 = 40
+                43 * 10 = 430
+                432 * 10 = 4320
+
+                Then we add new digit at end.
+            */
+
+            num = num / 10;  
+            // Removes last digit
+        }
+
+        System.out.println("Reversed Number: " + reverse);
+    }
+}
+
+/*
+    FINAL FORMULA TO REMEMBER:
+
+        newReverse = (oldReverse * 10) + digit
+
+    Meaning:
+        1. Shift existing digits left
+        2. Add new digit at end
+
+    Time Complexity: O(log n)
+    Space Complexity: O(1)
+*/
