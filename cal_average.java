@@ -11,10 +11,13 @@ class cal_average{
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
         System.out.println("enter the number :");
         double num1 = sc.nextInt();
+
         System.out.println("enter the number :");
         double num2 = sc.nextInt();
+
         System.out.println("enter the number :");
         double num3 = sc.nextInt();
 
